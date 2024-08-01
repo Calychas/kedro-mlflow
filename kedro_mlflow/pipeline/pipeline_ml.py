@@ -237,7 +237,7 @@ class PipelineML(Pipeline):
 
     def __sub__(self, other):  # pragma: no cover
         new_pipeline = super().__and__(other)
-        return self._turn_pipeline_to_ml(new_pipeline)
+        return new_pipeline
 
     def __and__(self, other):  # pragma: no cover
         # kept for compatibility with KedroContext _filter_pipelinefunction
