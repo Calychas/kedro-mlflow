@@ -165,7 +165,8 @@ class PipelineML(Pipeline):
     def only_nodes_with_namespace(
         self, node_namespace: str
     ) -> "Pipeline":  # pragma: no cover
-        raise NotImplementedError(MSG_NOT_IMPLEMENTED)
+        new_pipeline = super().only_nodes_with_namespace(node_namespace)
+        return new_pipeline
 
     def only_nodes_with_inputs(self, *inputs: str) -> "PipelineML":  # pragma: no cover
         raise NotImplementedError(MSG_NOT_IMPLEMENTED)
@@ -235,7 +236,8 @@ class PipelineML(Pipeline):
         raise NotImplementedError(MSG_NOT_IMPLEMENTED)
 
     def __sub__(self, other):  # pragma: no cover
-        raise NotImplementedError(MSG_NOT_IMPLEMENTED)
+        new_pipeline = super().__and__(other)
+        return self._turn_pipeline_to_ml(new_pipeline)
 
     def __and__(self, other):  # pragma: no cover
         # kept for compatibility with KedroContext _filter_pipelinefunction
